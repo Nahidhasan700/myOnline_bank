@@ -1,0 +1,31 @@
+body{
+      padding: 100px;
+}
+.submite-area{
+      margin-top: 50px;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px gray;
+}
+#treansection-area{
+      display: none;
+}
+.status{
+      margin: 0 20px;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+
+}
+.deposite{
+      
+      background-color: slateblue;
+}
+.withdraw{
+     
+      background-color: lightsalmon;
+}
+.blance{
+   
+      background-color: orange;
+}

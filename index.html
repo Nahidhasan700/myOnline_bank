@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Nahid Online Bank</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      
+      <div id="login-area">
+            <h1 class="text-center">Welcome to myOnline_bank </h1>
+                  <div class="submite-area">
+                        <h3>Login</h3>
+                        <input type="text" class="form-control" placeholder="Enter your Email" name="" id="">
+                        <br>
+                        <input type="password" class="form-control" placeholder="Enter your Password" name="" id="">
+                        <br>
+                        <button id="login" class="btn btn-success">Enter</button>
+                          <br>
+                  </div>
+
+      </div>
+<!-- second pages  -->
+
+      <div id="treansection-area">
+            <div class="row">
+                  <div class="col-md-4 ">
+                        <div class="deposite status">
+                              <h4>Deposite</h4>
+                             <h2>$ <span id="currentAmount">00</span>
+                             </h2>
+
+                        </div>
+                        
+                  </div>
+                  <div class="col-md-4 ">
+                        <div class="withdraw status">
+                              <h4>Withdraw</h4>
+                        <h2>$ <span id="minisAmount">00</span> 
+                        </h2>
+                        </div>
+                  </div>
+<!-- blance total -->
+
+                  <div class="col-md-4 ">
+                        <div class="blance status">
+                              <h4>Blance</h4>
+                        <h2 >$ <span id="totalBlance">1200</span></h2>
+                        </div>
+                  </div>
+            </div>
+
+            <!-- deposite  area -->
+            <div class="row">
+                  <div class="col-md-6">
+                        <div class="submite-area">
+                              <h3>Deposite</h3>
+                        <input id="amountAdd" type="text" class="form-control" placeholder="$ Amoun you want to deposite">
+                        <br>
+                        <button id="addBtn" class="btn btn-success">Deposite</button>
+                        </div>
+                  </div>
+
+
+                  <!-- withdraw are  -->
+                  <div class="col-md-6">
+                       <div class="submite-area">
+                        <h3>Withdraw</h3>
+                        <input id="amountSub" type="text" class="form-control" placeholder="$ Amoun you want to withdraw">
+                        <br>
+                        <button id="subBtn" class="btn btn-success">Withdraw</button>
+                       </div>
+                  </div>
+            </div>
+      </div>
+
+      <script>
+            //login btn event handler
+            let loginBtn = document.getElementById('login');
+            loginBtn.addEventListener('click', function(){
+                  let loginArea = document.getElementById('login-area');
+                  loginArea.style.display = 'none';
+                  let treansectionArea = document.getElementById('treansection-area');
+                  treansectionArea.style.display = 'block';
+                        })
+
+                        // deposite btn event handeler 
+                        let amountBtn = document.getElementById('addBtn');
+                        amountBtn.addEventListener('click', function(){
+                              let addAmount = document.getElementById('amountAdd').value;
+                              let depositAmount = parseFloat(addAmount);
+                              // let depositAmount = getInputNumber('amountAdd');
+                              // console.log(depositAmount);
+
+                              newTotal('currentAmount',depositAmount);
+
+                              newTotal('totalBlance',depositAmount);
+                              document.getElementById('amountAdd').value = '';
+                        })
+                        function newTotal(id, depositAmount){
+                              let totalBlance = document.getElementById(id).innerText;
+                              let totalBlanceNumber = parseFloat(totalBlance);
+                              let totalBlanceNew = depositAmount + totalBlanceNumber;
+                              document.getElementById(id).innerText = totalBlanceNew;
+                        }
+
+
+                        // withdraw btn event handeler
+                        let negBtn = document.getElementById('subBtn');
+                        negBtn.addEventListener('click',function(){
+                              let negatibAmount = getInputNumber('amountSub');
+                              // console.log(negatibAmount);
+                              newTotal('minisAmount',negatibAmount);
+                              newTotal('totalBlance',-1 * negatibAmount);
+
+                              document.getElementById('amountSub').value = '';
+
+
+                                          })
+
+
+
+
+                                          function getInputNumber(id){
+                                                let negAmount = document.getElementById('amountSub').value;
+                                                let negatibAmount = parseFloat(negAmount); 
+                                                return negatibAmount ;
+
+                                          }
+
+
+
+
+
+      </script>
+</body>
+</html>
